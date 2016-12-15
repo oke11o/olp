@@ -1,0 +1,27 @@
+{% for node in pages_list %}
+{% if node.group contains group %}
+{% if page.url == node.url %}
+<li class="active">
+    <a href="{{node.url | prepend: site.baseurl | prepend: site.url}}" >
+        {% if node.is_bold %}
+            <strong>{{node.title}}</strong>
+        {% else %}
+            {{node.title}}
+        {% endif %}
+    </a>
+</li>
+{% else %}
+<li class="">
+    <a href="{{node.url | prepend: site.baseurl | prepend: site.url}}">
+        {% if node.is_bold %}
+            <strong>{{node.title}}</strong>
+        {% else %}
+            {{node.title}}
+        {% endif %}
+    </a>
+</li>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% assign pages_list = nil %}
+{% assign group = nil %}
